@@ -13,8 +13,3 @@ Python 3
 ## Authors
 
 * **Alan Rupp**
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-# tube_labels
