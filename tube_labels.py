@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/alanrupp/anaconda3/bin/python
 
 ## Create script to generate tube label sheet (12x16 labels)
 import numpy as np
