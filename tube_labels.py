@@ -51,7 +51,7 @@ def make_labels(first_letter, first_number):
         labels = [letter] * 192
     return labels
 
-# - put into pandas dataframe  ------------------------------------------------
+# put into pandas dataframe
 def labels_to_df(labels):
     total_labels = len(labels)
     if total_labels % (12*16) != 0:
@@ -63,8 +63,8 @@ def labels_to_df(labels):
     labels = pd.DataFrame(labels)
     return labels
 
+# prepare Excel writer
 def write_excel(labels, size, output):
-    # - prepare Excel writer ------------------------------------------------------
     total_sheets = int(len(labels) / 16)
     writer = pd.ExcelWriter(path=output, engine='xlsxwriter')
     workbook = writer.book
