@@ -104,14 +104,19 @@ if __name__ == '__main__':
                         type=str, default='1/2"')
     parser.add_argument("--outfile", help='name of output file (default is tube_labels.xlsx)', \
                         type=str, default='tube_labels.xlsx')
-    parser.add_argument('--total', help='total stickers')
+    parser.add_argument('--total', help='total stickers', default=192, type=int)
+    parser.add_argument('--text', help='treat all inputs as text', action='store_true')
     args = parser.parse_args()
 
     # find first letter and/or number
     first_letter, first_number = parse_label(args.start)
-
-    # make a list of all labels from input
-    labels = make_labels(first_letter, first_number)
+    if (args.text):
+        first_letter = args.start
+        first_number = ""
+        labels = [args.start] * args.total
+    else:
+        first_letter, first_number = parse_label(args.start)
+        labels = make_labels(first_letter, first_number)
 
     # make pandas dataframe
     labels = labels_to_df(labels)
