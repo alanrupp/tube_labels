@@ -74,9 +74,9 @@ def write_excel(labels, size, output):
     workbook = writer.book
 
     # adjust font size for each label
-    if size == '1/2"':
+    if size == "big":
         fontSize = 11
-    elif size == '3/8"':
+    elif size == "small":
         fontSize = 10
 
     # add formatting for appropriate font sizes and centering
@@ -104,8 +104,8 @@ if __name__ == '__main__':
     parser.add_argument('start', help='specify a start value', type=str)
     parser.add_argument('--end', help='optional end value (default makes 1 sheet)',\
                         type=str, default=False)
-    parser.add_argument("--size", help='sticker size in inches (default is 1/2")', \
-                        type=str, default='1/2"')
+    parser.add_argument("--size", help='sticker size: "big" or "small" (default is big)', \
+                        type=str, default='big')
     parser.add_argument("--outfile", help='name of output file (default is tube_labels.xlsx)', \
                         type=str, default='tube_labels.xlsx')
     parser.add_argument('--total', help='total stickers', default=192, type=int)
