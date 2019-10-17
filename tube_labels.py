@@ -25,8 +25,12 @@ def parse_label(label):
 # generate all the values
 def make_labels(first_letter, first_number):
     # find last letter and/or number
-    if not args.end:
+    if not args.end and not args.total:
         last_number = first_number + 191
+        last_letter = first_letter + str(last_number)
+        letter = first_letter
+    elif args.total:
+        last_number = first_number + args.total
         last_letter = first_letter + str(last_number)
         letter = first_letter
     else:
@@ -97,7 +101,7 @@ def write_excel(labels, size, output):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description="Generate a sheet of tube labels")
-    parser.add_argument('--start', help='specify a start value', type=str)
+    parser.add_argument('start', help='specify a start value', type=str)
     parser.add_argument('--end', help='optional end value (default makes 1 sheet)',\
                         type=str, default=False)
     parser.add_argument("--size", help='sticker size in inches (default is 1/2")', \
