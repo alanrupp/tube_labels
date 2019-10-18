@@ -77,7 +77,7 @@ def write_excel(labels, size, output):
     if size == "big":
         fontSize = 11
     elif size == "small":
-        fontSize = 10
+        fontSize = 8
 
     # add formatting for appropriate font sizes and centering
     cell_format = workbook.add_format({'text_wrap': True, 'align': 'center',\
@@ -92,7 +92,10 @@ def write_excel(labels, size, output):
         worksheet.set_column('A:L', 5.7, cell_format)
         for i in range(16):
             worksheet.set_row(i, 45)
-        worksheet.set_margins(left=0.5, right=0.5, top=0.5, bottom=0.5)
+            if size == "big":
+                worksheet.set_margins(left=0.52, right=0.52, top=0.52, bottom=0.52)
+            elif size == "small":
+                worksheet.set_margins(left=0.62, right=0.69, top=0.62, bottom=0.62)
 
     workbook.close()
 
